@@ -1,0 +1,137 @@
+<aside
+  class="sidebar"
+  [ngClass]="{ collapsed: isSidebarCollapsed }"
+>
+  <div
+    class="sidebar__logo"
+    (click)="toggleSidebar()"
+  >
+    <img
+      src="/assets/images/logos/web-tv-logo.svg"
+      alt="Logo"
+      class="sidebar__logo-img"
+    />
+
+    <i class="bx bx-chevrons-left sidebar__show"></i>
+  </div>
+
+  <nav class="sidebar-nav">
+    <div
+      routerLink="/dashboard"
+      routerLinkActive="active"
+      class="sidebar-nav__link"
+    >
+      <i class="bx bx-bar-chart-square"></i>
+      <div [ngClass]="{ 'sidebar-nav__link-tooltip tooltip-inner tooltip-arrow': isSidebarCollapsed }">
+        {{ 'sidebar.dashboard' | translate }}
+      </div>
+    </div>
+    <div
+      routerLink="/managers"
+      routerLinkActive="active"
+      class="sidebar-nav__link"
+    >
+      <i class="bx bx-group"></i>
+      <div [ngClass]="{ 'sidebar-nav__link-tooltip tooltip-inner tooltip-arrow': isSidebarCollapsed }">
+        {{ 'sidebar.managers' | translate }}
+      </div>
+    </div>
+    <div
+      routerLink="/streams"
+      routerLinkActive="active"
+      class="sidebar-nav__link"
+    >
+      <i class="bx bx-movie-play"></i>
+      <div [ngClass]="{ 'sidebar-nav__link-tooltip tooltip-inner tooltip-arrow': isSidebarCollapsed }">
+        {{ 'sidebar.streams' | translate }}
+      </div>
+    </div>
+    <div
+      routerLink="/devices"
+      routerLinkActive="active"
+      class="sidebar-nav__link"
+    >
+      <i class="bx bx-camera-home"></i>
+      <div [ngClass]="{ 'sidebar-nav__link-tooltip tooltip-inner tooltip-arrow': isSidebarCollapsed }">
+        {{ 'sidebar.devices' | translate }}
+      </div>
+    </div>
+    <div
+      routerLink="/scenes"
+      routerLinkActive="active"
+      class="sidebar-nav__link"
+    >
+      <i class="bx bx-sitemap"></i>
+      <div [ngClass]="{ 'sidebar-nav__link-tooltip tooltip-inner tooltip-arrow': isSidebarCollapsed }">
+        {{ 'sidebar.scenes' | translate }}
+      </div>
+    </div>
+    <div
+      routerLink="/portal-settings"
+      routerLinkActive="active"
+      class="sidebar-nav__link"
+    >
+      <i class="bx bx-cast"></i>
+      <div [ngClass]="{ 'sidebar-nav__link-tooltip tooltip-inner tooltip-arrow': isSidebarCollapsed }">
+        {{ 'sidebar.portalSettings' | translate }}
+      </div>
+    </div>
+    <div
+      routerLink="/settings"
+      routerLinkActive="active"
+      class="sidebar-nav__link"
+    >
+      <i class="bx bx-cog"></i>
+      <div [ngClass]="{ 'sidebar-nav__link-tooltip tooltip-inner tooltip-arrow': isSidebarCollapsed }">
+        {{ 'sidebar.settings' | translate }}
+      </div>
+    </div>
+
+    <hr />
+
+    <div
+      routerLink="/login"
+      routerLinkActive="active"
+      class="sidebar-nav__link"
+    >
+      <i class="bx bx-log-out logout"></i>
+      <div class="sidebar__admin-info">
+        <p>username@braathe.com</p>
+        <p>Admin</p>
+      </div>
+    </div>
+  </nav>
+
+  <div class="sidebar__footer">
+    <a
+      href="https://www.whitehouse.gov/accessibility/"
+      target="_blank"
+      class="accessibility-statement"
+    >
+      <span *ngIf="!isSidebarCollapsed">{{ 'sidebar.accessibilityStatement' | translate }}</span>
+      <i class="bx bx-link-external"></i>
+    </a>
+
+    <img
+      *ngIf="!isSidebarCollapsed"
+      class="sidebar__footer-icon"
+      src="/assets/images/logos/web-tv-full-logo.svg"
+      alt="Logo"
+    />
+    <img
+      *ngIf="isSidebarCollapsed"
+      class="sidebar__footer-icon icon-collapsed"
+      src="/assets/images/logos/web-tv-logo.svg"
+      alt="Logo"
+    />
+
+    <p class="sidebar__footer-copyright">
+      <span>© {{ currentYear }}, Powered by</span>
+      <span
+        ><img
+          src="/assets/images/logos/braathe-logo.svg"
+          alt="Logo black"
+      /></span>
+    </p>
+  </div>
+</aside>

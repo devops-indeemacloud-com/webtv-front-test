@@ -1,0 +1,157 @@
+<div class="card accordion-item">
+  <h2
+    class="accordion-header"
+    id="headingOne"
+  >
+    <button
+      type="button"
+      class="accordion-button"
+      data-bs-toggle="collapse"
+      data-bs-target="#accordionOne"
+      aria-expanded="true"
+      aria-controls="accordionOne"
+    >
+      <span><i class="bx bx-user-circle"></i></span>
+      ACCOUNT INFORMATION
+    </button>
+  </h2>
+
+  <div
+    id="accordionOne"
+    class="accordion-collapse collapse show"
+    data-bs-parent="#accordion"
+  >
+    <form
+      [formGroup]="accountInformationForm"
+      class="accordion-body managers__accordion-body d-flex flex-wrap"
+    >
+      <div class="col-md-6">
+        <div class="mb-2">
+          <div class="form-check form-switch">
+            <input
+              formControlName="driverIsActive"
+              class="form-check-input"
+              type="checkbox"
+              id="driverIsActive"
+            />
+            <p
+              class="form-check-label"
+              for="driverIsActive"
+            >
+              Active
+            </p>
+          </div>
+          <p class="text-light"><small>Set the inactive/active status.</small></p>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Name</label>
+          <div class="input-group">
+            <input
+              formControlName="driverFirstName"
+              type="text"
+              aria-label="First name"
+              placeholder="First name"
+              class="form-control"
+            />
+            <input
+              formControlName="driverLastName"
+              type="text"
+              aria-label="Last name"
+              placeholder="Last name"
+              class="form-control"
+            />
+          </div>
+        </div>
+        <div class="mb-3">
+          <label
+            for="driverEmail"
+            class="form-label"
+            >Email</label
+          >
+          <input
+            formControlName="driverEmail"
+            id="driverEmail"
+            class="form-control"
+            type="text"
+            placeholder="Enter"
+          />
+        </div>
+        <div class="mb-3">
+          <label
+            for="driverMobile"
+            class="form-label"
+            >Mobile</label
+          >
+          <input
+            class="form-control"
+            formControlName="driverMobile"
+            type="tel"
+            placeholder="Number"
+            id="driverMobile"
+          />
+          <p class="text-light"><small>Mobile used to send notifications</small></p>
+        </div>
+        <div class="mb-3">
+          <label
+            for="driverStartDate"
+            class="form-label"
+            >Start date</label
+          >
+          <input
+            class="form-control"
+            formControlName="driverStartDate"
+            type="date"
+            value="2021-06-18"
+            id="driverStartDate"
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">End date</label>
+          <div class="input-group">
+            <div class="input-group-text">
+              <input
+                #endDateCheckbox
+                formControlName="endDateCheckbox"
+                class="form-check-input mt-0"
+                type="checkbox"
+              />
+            </div>
+            <input
+              class="form-control"
+              formControlName="driverEndDate"
+              type="date"
+              value="2021-06-18"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-3 col-md-6 d-flex flex-column">
+        <div class="managers__additional-photo rounded">
+          <img
+            *ngIf="imageFile"
+            [src]="imageFile"
+            class="rounded"
+            alt=""
+          />
+        </div>
+        <div class="managers__choose-file d-flex justify-content-between">
+          <p class="text-light"><small>Maximum size 5 Mb</small></p>
+          <div>
+            <label
+              for="photo"
+              class="form-label"
+              >Choose</label
+            >
+            <input
+              class="form-control"
+              (change)="onChangePhoto($event)"
+              type="file"
+              id="photo"
+            />
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

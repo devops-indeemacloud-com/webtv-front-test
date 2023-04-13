@@ -1,0 +1,17 @@
+{
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "managers": "Managers",
+    "streams": "Streams",
+    "devices": "Devices",
+    "scenes": "Scenes",
+    "portalSettings": "Portal Settings",
+    "settings": "Settings",
+    "accessibilityStatement": "Accessibility Statement",
+    "poweredBy": "Powered by"
+  },
+  "searchPlaceholder": "Search...",
+  "btn": {
+    "add": "Add"
+  }
+}

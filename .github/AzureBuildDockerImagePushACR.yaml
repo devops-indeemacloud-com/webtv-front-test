@@ -1,0 +1,37 @@
+name: Build Linux Container Image -> Push to ACR -> Deploy Container Image to Azure App Service
+
+on:
+  #workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        #working-directory: pds_app
+    steps:
+    - uses: webfactory/ssh-agent@v0.5.4
+      with:
+        ssh-private-key: ${{ secrets.SECRET_REPO_DEPLOY_KEY }}
+    
+    - name: 'Checkout GitHub Action' 
+      uses: actions/checkout@main
+    
+    - uses: azure/docker-login@v1
+      with:
+        login-server: webtvtesting.azurecr.io
+        username: ${{ secrets.REGISTRY_USERNAME_WEBTV }}
+        password: ${{ secrets.REGISTRY_PASSWORD_WEBTV }}
+    - run: |
+        docker build -t webtvtesting.azurecr.io/web-tv-front:${{ github.sha }} .
+        docker push webtvtesting.azurecr.io/web-tv-front:${{ github.sha }}
+    
+    - uses: azure/webapps-deploy@v2
+      with:
+        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_WEBTV }}
+        app-name: 
+        images: 'webtvtesting.azurecr.io/web-tv-front:${{ github.sha }}'

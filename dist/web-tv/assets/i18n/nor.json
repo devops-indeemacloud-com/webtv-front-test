@@ -1,0 +1,11 @@
+{
+  "sidebar": {
+    "dashboard": "Dashbord",
+    "missions": "Oppdrag",
+    "employees": "Ansatte",
+    "customers": "Kunder",
+    "vehicles": "Kjøretøy",
+    "settings": "Innstillinger"
+  },
+  "greeting": "Hallo {{name}}!"
+}

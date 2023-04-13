@@ -1,0 +1,117 @@
+<div class="card accordion-item">
+  <h2
+    class="accordion-header"
+    id="headingTwo"
+  >
+    <button
+      type="button"
+      class="accordion-button collapsed text-uppercase"
+      data-bs-toggle="collapse"
+      data-bs-target="#accordionTwo"
+      aria-expanded="false"
+      aria-controls="accordionTwo"
+    >
+      <span><i class="bx bx-detail"></i></span>
+      Contact Information
+    </button>
+  </h2>
+  <form
+    [formGroup]="contactInformationForm"
+    id="accordionTwo"
+    class="accordion-collapse collapse"
+    aria-labelledby="headingTwo"
+    data-bs-parent="#accordion"
+  >
+    <div
+      formArrayName="contacts_info"
+      *ngFor="let address of addressControls; let addressFieldIdx = index"
+      class="accordion-body managers__accordion-body d-flex flex-wrap pb-0"
+    >
+      <div
+        [formGroupName]="addressFieldIdx"
+        class="row"
+      >
+        <div class="mb-3 col-md-6">
+          <label class="form-label">Address</label>
+          <input
+            class="form-control"
+            formControlName="address"
+            type="text"
+            placeholder="Enter"
+          />
+        </div>
+        <div class="mb-3 col-md-3">
+          <label class="form-label">CITY</label>
+          <input
+            class="form-control"
+            formControlName="city"
+            type="text"
+            placeholder="Enter"
+          />
+        </div>
+        <div class="mb-3 col-md-2 position-relative">
+          <label class="form-label">ZIP code</label>
+          <input
+            class="form-control"
+            formControlName="zip_code"
+            type="text"
+            placeholder="Enter"
+          />
+          <div
+            *ngIf="addressFieldIdx"
+            class="delete-btn"
+            (click)="removeAddress(addressFieldIdx)"
+          >
+            <i class="bx bx-trash"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-body managers__accordion-body pb-0">
+      <div class="col-md-12 d-flex justify-content-end">
+        <a
+          href="javascript:void(0);"
+          class="card-link"
+          (click)="addAddress()"
+          >Add address</a
+        >
+      </div>
+      <hr />
+    </div>
+    <div
+      class="accordion-body managers__accordion-body d-flex flex-wrap pb-0"
+      formArrayName="contacts_info_phones"
+      *ngFor="let phone of phonesControls; let phoneFieldIdx = index"
+    >
+      <div
+        [formGroupName]="phoneFieldIdx"
+        class="col-md-12"
+      >
+        <div class="mb-3 col-md-6 position-relative">
+          <label class="form-label">Mobile phone work</label>
+          <input
+            class="form-control"
+            formControlName="phone"
+            type="text"
+            placeholder="Enter"
+          />
+          <div
+            *ngIf="phoneFieldIdx"
+            class="delete-btn"
+            (click)="removePhone(phoneFieldIdx)"
+          >
+            <i class="bx bx-trash"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-body managers__accordion-body d-flex justify-content-end">
+      <a
+        href="javascript:void(0);"
+        class="card-link"
+        (click)="addPhone()"
+        >Add mobile phone</a
+      >
+    </div>
+  </form>
+</div>
