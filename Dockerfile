@@ -9,7 +9,8 @@ COPY . .
 
 # Install dependencies
 RUN npm install
-RUN npm install -g @angular/cli
+RUN npm install -g @angular/cli && \
+    find /app/node_modules/ ! -user root | xargs chown root:root
 
 # Generate the build of the application
 RUN ng build
