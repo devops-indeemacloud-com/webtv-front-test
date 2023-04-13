@@ -18,7 +18,7 @@ jobs:
       with:
         ssh-private-key: ${{ secrets.SECRET_REPO_DEPLOY_KEY }}
     
-    - name: 'Checkout GitHub Action' 
+    - name: 'Checkout GitHub Action'  
       uses: actions/checkout@main
     
     - uses: azure/docker-login@v1
