@@ -27,7 +27,7 @@ jobs:
         username: ${{ secrets.REGISTRY_USERNAME_WEBTV }}
         password: ${{ secrets.REGISTRY_PASSWORD_WEBTV }}
     - run: |
-        docker build -t webtvtesting.azurecr.io/web-tv-front:${{ github.sha }} .
+        docker build -t webtvtesting.azurecr.io/web-tv-front:${{ github.sha }} . --no-cache 
         docker push webtvtesting.azurecr.io/web-tv-front:${{ github.sha }}
     
     - uses: azure/webapps-deploy@v2
