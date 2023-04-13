@@ -1,5 +1,5 @@
 # Use an official Node.js runtime as a parent image
-FROM node:18
+FROM node:16
 
 # Set the working directory to /app
 WORKDIR /app
@@ -8,9 +8,8 @@ WORKDIR /app
 COPY . .
 
 # Install dependencies
-RUN npm install && \
-    find /app/node_modules/ ! -user root | xargs chown root:root
-RUN npm install -g @angular/cli 
+RUN npm install && \ 
+    npm install -g @angular/cli 
 
 # Generate the build of the application
 RUN ng build
